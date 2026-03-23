@@ -1,5 +1,7 @@
 'use client'
 
+import { useMemo } from 'react'
+
 const priorities = {
   High: 'bg-red-500/15 text-red-400 border border-red-500/30',
   Medium: 'bg-yellow-500/15 text-yellow-400 border border-yellow-500/30',
@@ -113,11 +115,14 @@ const highlights = [
 ]
 
 export function ImprovementsPanel() {
-  const grouped = {
-    Now: improvements.filter((item) => item.horizon === 'Now'),
-    Next: improvements.filter((item) => item.horizon === 'Next'),
-    Later: improvements.filter((item) => item.horizon === 'Later'),
-  }
+  const grouped = useMemo(
+    () => ({
+      Now: improvements.filter((item) => item.horizon === 'Now'),
+      Next: improvements.filter((item) => item.horizon === 'Next'),
+      Later: improvements.filter((item) => item.horizon === 'Later'),
+    }),
+    []
+  )
 
   return (
     <div className="h-full overflow-auto p-6">
