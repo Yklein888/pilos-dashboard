@@ -11,17 +11,21 @@ interface MessageInputProps {
 export function MessageInput({ onSend, disabled }: MessageInputProps) {
   const [text, setText] = useState('')
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  function sendMessage() {
     if (!text.trim() || disabled) return
     onSend(text.trim())
     setText('')
   }
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    sendMessage()
+  }
+
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      handleSubmit(e as unknown as React.FormEvent)
+      sendMessage()
     }
   }
 
