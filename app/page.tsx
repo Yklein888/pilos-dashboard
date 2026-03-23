@@ -41,7 +41,7 @@ export default function Home() {
 
             {/* Agents Tab */}
             <TabsContent value="agents" className="h-full m-0">
-              <AgentPanel />
+              <AgentPanel activeProject={activeProject} />
             </TabsContent>
 
             {/* Terminal Tab */}
@@ -58,7 +58,7 @@ export default function Home() {
             <TabsContent value="settings" className="h-full m-0">
               <div className="flex h-full gap-6">
                 <SettingsPanel />
-                <CostTracker />
+                <CostTracker activeProject={activeProject} />
               </div>
             </TabsContent>
           </div>
