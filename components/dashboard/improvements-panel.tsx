@@ -1,7 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
-
 const priorities = {
   High: 'bg-red-500/15 text-red-400 border border-red-500/30',
   Medium: 'bg-yellow-500/15 text-yellow-400 border border-yellow-500/30',
@@ -99,6 +97,12 @@ const improvements: Improvement[] = [
   },
 ]
 
+const groupedImprovements = {
+  Now: improvements.filter((item) => item.horizon === 'Now'),
+  Next: improvements.filter((item) => item.horizon === 'Next'),
+  Later: improvements.filter((item) => item.horizon === 'Later'),
+}
+
 const highlights = [
   {
     title: 'Enterprise readiness',
@@ -115,15 +119,6 @@ const highlights = [
 ]
 
 export function ImprovementsPanel() {
-  const grouped = useMemo(
-    () => ({
-      Now: improvements.filter((item) => item.horizon === 'Now'),
-      Next: improvements.filter((item) => item.horizon === 'Next'),
-      Later: improvements.filter((item) => item.horizon === 'Later'),
-    }),
-    []
-  )
-
   return (
     <div className="h-full overflow-auto p-6">
       <div className="flex flex-wrap items-start justify-between gap-6 mb-6">
@@ -152,10 +147,12 @@ export function ImprovementsPanel() {
         <div key={horizon} className="mb-8">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-sm font-semibold text-muted-foreground">{horizon} horizon</h3>
-            <div className="text-xs text-muted-foreground">{grouped[horizon].length} initiatives</div>
+            <div className="text-xs text-muted-foreground">
+              {groupedImprovements[horizon].length} initiatives
+            </div>
           </div>
           <div className="space-y-3">
-            {grouped[horizon].map((item) => (
+            {groupedImprovements[horizon].map((item) => (
               <div
                 key={item.id}
                 className="p-4 bg-card border border-border rounded-lg flex flex-col gap-3"
