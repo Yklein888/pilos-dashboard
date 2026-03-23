@@ -1,4 +1,9 @@
 node_modules/
 .next/
+out/
 .env.local
 .vscode/
+
+# Tauri / Rust build artifacts
+src-tauri/target/
+src-tauri/gen/

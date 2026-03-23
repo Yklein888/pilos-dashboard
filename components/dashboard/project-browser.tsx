@@ -36,10 +36,10 @@ export function ProjectBrowser({
           <button
             key={project.id}
             onClick={() => onSelectProject(project.id)}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+            className={`group relative w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
               activeProject === project.id
-                ? 'bg-primary text-primary-foreground'
-                : 'hover:bg-muted text-foreground'
+                ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-glow'
+                : 'hover:bg-muted border border-transparent hover:border-border/50 text-foreground'
             }`}
           >
             {activeProject === project.id ? (

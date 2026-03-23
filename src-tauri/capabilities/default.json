@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schema.tauri.app/schema/2/capabilities",
+  "identifier": "default",
+  "description": "Default capability for the PILOS Dashboard main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default"
+  ]
+}

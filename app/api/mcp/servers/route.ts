@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { NextResponse } from 'next/server'
 
+
 const MCP_CONFIG_PATH = path.resolve(
   process.cwd(),
   '..',
