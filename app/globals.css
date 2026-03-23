@@ -44,3 +44,18 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-muted rounded hover:bg-muted-foreground;
 }
+
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .hover-lift {
+    transition: all 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}
