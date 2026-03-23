@@ -9,6 +9,7 @@ import { SettingsPanel } from '@/components/dashboard/settings-panel'
 import { IntegrationsPanel } from '@/components/dashboard/integrations-panel'
 import { CostTracker } from '@/components/dashboard/cost-tracker'
 import { Header } from '@/components/dashboard/header'
+import { ImprovementsPanel } from '@/components/dashboard/improvements-panel'
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState<string | null>(null)
@@ -23,11 +24,12 @@ export default function Home() {
         <Tabs defaultValue="projects" className="h-full flex flex-col">
           {/* Navigation Tabs */}
           <div className="border-b border-border px-6 pt-4">
-            <TabsList className="grid w-full max-w-md grid-cols-5">
+            <TabsList className="grid w-full max-w-2xl grid-cols-6">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="agents">Agents</TabsTrigger>
               <TabsTrigger value="terminal">Terminal</TabsTrigger>
               <TabsTrigger value="integrations">Integrations</TabsTrigger>
+              <TabsTrigger value="improvements">Improvements</TabsTrigger>
               <TabsTrigger value="settings">Settings</TabsTrigger>
             </TabsList>
           </div>
@@ -52,6 +54,11 @@ export default function Home() {
             {/* Integrations Tab */}
             <TabsContent value="integrations" className="h-full m-0">
               <IntegrationsPanel />
+            </TabsContent>
+
+            {/* Improvements Tab */}
+            <TabsContent value="improvements" className="h-full m-0">
+              <ImprovementsPanel />
             </TabsContent>
 
             {/* Settings Tab */}
