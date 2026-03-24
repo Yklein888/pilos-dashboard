@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { callPilosProjectsMcpTool } from '@/lib/server/pilos-mcp'
+import path from 'node:path'
 
 export async function GET() {
   try {
@@ -7,7 +8,18 @@ export async function GET() {
     if (!json) return NextResponse.json({ projects: [] })
     return NextResponse.json(json)
   } catch {
-    return NextResponse.json({ projects: [] })
+    const cwd = process.cwd()
+    return NextResponse.json({
+      projects: [
+        {
+          id: cwd,
+          name: path.basename(cwd),
+          status: 'local',
+          type: 'workspace',
+          recent_activity: 'Fallback project (MCP offline)',
+        },
+      ],
+    })
   }
 }
 
